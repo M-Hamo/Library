@@ -18,15 +18,10 @@ const initialMongo = async () => {
   try {
     // db.once("open", () => console.log("connected to mongodb"));
     await mongoose
-      .connect(
-        process.env.NODE_ENV === "production"
-          ? process.env.DATABASE_URI
-          : process.env.DATABASE_URI_LOCAL,
-        {
-          useNewUrlParser: true,
-          useUnifiedTopology: true,
-        }
-      )
+      .connect(process.env.DATABASE_URL, {
+        useNewUrlParser: true,
+        useUnifiedTopology: true,
+      })
       .catch((err) => handell(err));
   } catch (err) {
     console.log(err);
