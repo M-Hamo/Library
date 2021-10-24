@@ -1,11 +1,14 @@
+// check if with environment we are using
 process.env.NODE_ENV !== "production" && require("dotenv").config();
 
 const express = require("express");
 const app = express();
 const expressLayouts = require("express-ejs-layouts");
 const mongoose = require("mongoose");
-const indexRouter = require("./routes/index");
 const bodyParser = require("body-parser");
+/* Routes */
+const indexRouter = require("./routes/index");
+const authorRouter = require("./routes/authorRouter");
 
 app.set("view engine", "ejs");
 app.set("views", __dirname + "/views");
@@ -13,7 +16,7 @@ app.set("layout", "layouts/layout");
 app.use(expressLayouts);
 app.use(express.static("public"));
 app.use(express.json());
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 const initialMongo = async () => {
@@ -33,8 +36,9 @@ const initialMongo = async () => {
 
 initialMongo();
 
+// app.use("/api/test", require("./routes/testRouter"));
 app.use("/", indexRouter);
-app.use("/api/test", require("./routes/testRouter"));
+app.use("/authors", authorRouter);
 
 const port = process.env.PORT || 3100;
 app.listen(port, () => {
