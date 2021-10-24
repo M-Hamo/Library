@@ -22,7 +22,7 @@ const initialMongo = async () => {
   try {
     // db.once("open", () => console.log("connected to mongodb"));
     await mongoose
-      .connect(process.env.DATABASE_URL_LOCAL, {
+      .connect(process.env.DATABASE_URI, {
         useNewUrlParser: true,
         useUnifiedTopology: true,
       })
