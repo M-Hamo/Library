@@ -5,7 +5,8 @@
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
-    "div": "nodemon server.js"
+    "div": "nodemon server.js",
+    "build":"NODE_ENV=production ./node_modules/.bin.netlify.lambda serve src"
   },
   "keywords": [],
   "author": "",
