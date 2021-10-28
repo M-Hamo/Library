@@ -1,0 +1,39 @@
+<h2>Search Books</h2>
+<br />
+<form action="/books" method="GET">
+  <div>
+    <label for="name">Title</label>
+    <input
+      type="text"
+      id="name"
+      name="title"
+      value="<%= searchOptions.title  %> "
+    />
+  </div>
+  <div>
+    <label for="publishedAfter">Publish After</label>
+    <input
+      type="date"
+      id="publishedAfter"
+      name="publishedAfter"
+      value="<%= searchOptions.publishedAfter  %> "
+    />
+  </div>
+  <div>
+    <label for="publishedBefore">Publish Before</label>
+    <input
+      type="date"
+      id="publishedBefore"
+      name="publishedBefore"
+      value="<%= searchOptions.publishedBefore  %> "
+    />
+  </div>
+  <button type="submit">Search</button>
+</form>
+<br />
+<div>
+  <% books.forEach(book=>{ %>
+
+  <img src="<%= book.coverImagePath  %> " height="150" width="100" alt="" />
+  <% }) %>
+</div>

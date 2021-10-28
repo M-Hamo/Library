@@ -1,6 +1,6 @@
 const Author = require("../models/authorModel");
 
-// All Authors routes
+// All Authors route
 const renderAllAuthors = async (req, res) => {
   let searchOptions = {};
   if (!!req.query.name) {

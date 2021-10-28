@@ -8,7 +8,8 @@ const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 /* Routes */
 const indexRouter = require("./routes/index");
-const authorRouter = require("./routes/authorRouter");
+const authorRouter = require("./routes/authorsRouter");
+const bookRouter = require("./routes/booksRouter");
 
 app.set("view engine", "ejs");
 app.set("views", __dirname + "/views");
@@ -36,9 +37,9 @@ const initialMongo = async () => {
 
 initialMongo();
 
-// app.use("/api/test", require("./routes/testRouter"));
 app.use("/", indexRouter);
 app.use("/authors", authorRouter);
+app.use("/books", bookRouter);
 
 const port = process.env.PORT || 3100;
 app.listen(port, () => {
