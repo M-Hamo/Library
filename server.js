@@ -10,6 +10,7 @@ const bodyParser = require("body-parser");
 const indexRouter = require("./routes/index");
 const authorRouter = require("./routes/authorsRouter");
 const bookRouter = require("./routes/booksRouter");
+const path = require("path");
 
 app.set("view engine", "ejs");
 app.set("views", __dirname + "/views");
@@ -17,8 +18,9 @@ app.set("layout", "layouts/layout");
 app.use(expressLayouts);
 app.use(express.static("public"));
 app.use(express.json());
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({ limit: "10mb", extended: true }));
 app.use(bodyParser.json());
+app.use(express.static(path.join(__dirname, "/uploads")));
 
 const initialMongo = async () => {
   //   const db = mongoose.connection;

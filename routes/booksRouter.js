@@ -9,7 +9,7 @@ router.get("/new", bookController.newBookRoute);
 // Create Book Route
 router.post(
   "/",
-  bookController.upload.single("cover"),
+  // bookController.upload.single("cover"),
   bookController.addNewBook
 );
 
