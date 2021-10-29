@@ -13,4 +13,12 @@ router.post(
   bookController.addNewBook
 );
 
+router.get("/:id", bookController.showBook)
+
+router.get("/:id/edit", bookController.editBook)
+
+router.put("/:id", bookController.updateBook)
+
+router.delete("/:id", bookController.deleteBook)
+
 module.exports = router;
