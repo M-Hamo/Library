@@ -27,9 +27,7 @@ const renderAllBooks = async (req, res) => {
   if (!!req.query.publishedAfter) {
     query = query.gte("publishDate", req.query.publishedAfter);
   }
-  // if (!!req.query.title) {
-  //   searchParams.title = new RegExp(req.query.title.trim(), "i");
-  // }
+
   try {
     const books = await query.exec();
     res.render("books/index", {
@@ -63,10 +61,10 @@ const addNewBook = async (req, res) => {
   try {
     const newBook = await book.save();
     // res.redirect(`books/${newAuthor.id}`);
-    res.redirect(`books`);  
+    res.redirect(`books`);
   } catch (err) {
     //   if (!!book.coverImageName) removeBookCover(book.coverImageName);
-      renderNewPage(res, book, true);
+    renderNewPage(res, book, true);
   }
 };
 
