@@ -25,9 +25,7 @@ app.use(methodOverride("_method"));
 app.use(express.static(path.join(__dirname, "/uploads")));
 
 const initialMongo = async () => {
-  //   const db = mongoose.connection;
   try {
-    // db.once("open", () => console.log("connected to mongodb"));
     await mongoose
       .connect(process.env.DATABASE_URL, {
         useNewUrlParser: true,
